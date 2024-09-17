@@ -113,12 +113,11 @@ public class SinglyLinkedList<T> {
     }
 
     // ------------------------ RECURSIVE APPROACH -----------------------
-    // ----- 6.a Helper Function
     public boolean searchNodeRecursion(LinkedListNode<Integer> head, int value) {
         LinkedListNode<Integer> current = head;
         return searchRecursive(current, value);
     }
-
+    // ----- 6.a Helper Function
     private static boolean searchRecursive(LinkedListNode<Integer> node, int value) {
         if (node == null) {
             return false;
@@ -130,6 +129,30 @@ public class SinglyLinkedList<T> {
 
         return searchRecursive(node.next, value);
     }
+
+    // Search Node with generic type T
+    public boolean searchNodeT(T data) {
+        //Start from first element
+        Node currentNode = this.headNode;
+        while(currentNode != null) {
+            if (currentNode.data.equals(data))
+                return true; //value found
+            currentNode = currentNode.nextNode;
+        }
+        return false; //value not found
+    }
+
+    // -- 7. Delete At Head - delete the first node of the Linked List
+    public void deleteAtHead() {
+        if(isEmpty()) {
+            return;
+        }
+        headNode = headNode.nextNode;
+        size--;
+    }
+
+    // -- 8. Delete By Value - delete a node by value from the Linked List
+
 
 
 }

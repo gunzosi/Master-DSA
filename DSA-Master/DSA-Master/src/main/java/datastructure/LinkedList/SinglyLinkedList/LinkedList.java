@@ -52,4 +52,31 @@ public class LinkedList<T> {
         }
         return false;
     }
+
+    // Delete by VALUE
+
+    public static boolean deleteByValue(LinkedListNode<Integer> head, int value) {
+        boolean deleted = false;
+
+        LinkedListNode<Integer> current = head;
+        LinkedListNode<Integer> previous = null;
+
+        if (current.data == value) {
+            head = head.next;
+            deleted = true;
+            return deleted;
+        }
+
+        while(current != null) {
+            if (value == current.data) {
+                previous.next = current.next;
+                current.next = null;
+                deleted = true;
+                break;
+            }
+            previous = current;
+            current = current.next;
+        }
+        return deleted;
+    }
 }
