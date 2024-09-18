@@ -6,12 +6,13 @@ public class DoublyLinkedList<T> {
         public Node nextNode;
         public Node prevNode;
     }
-
+    public Node tailNode;
     public Node headNode;
     public int size;
 
     // -- 0. Constructor
     public DoublyLinkedList() {
+        this.tailNode = null;
         this.headNode = null;
     }
 
@@ -75,4 +76,64 @@ public class DoublyLinkedList<T> {
             currentNode = currentNode.nextNode;
         }
     }
+    // -- 4. Insert at Head - insert new data at the start of the Linked List
+    public void insertAtHead(T data) {
+        Node newNode = new Node();
+        newNode.data = data;
+        newNode.nextNode = this.headNode;
+        newNode.prevNode = null;
+        if (!isEmpty()) {
+            headNode.prevNode = newNode;
+        } else {
+            tailNode = newNode;
+        }
+        this.headNode = newNode;
+        size++;
+    }
+
+    // -- 5. Insert at Tail - insert new data at the end of the Linked List
+    public void insertAtEEnd(T data) {
+        if (isEmpty()) {
+            insertAtHead(data);
+            return;
+        }
+
+        Node newNode = new Node();
+        newNode.data = data;
+        newNode.nextNode = null;
+        newNode.prevNode = tailNode;
+        tailNode.nextNode = newNode;
+        tailNode = newNode;
+        size++;
+    }
+
+    public void deletedAtHead() {
+        if (isEmpty()) {
+            return;
+        }
+
+        headNode = headNode.nextNode;
+        if (headNode == null) {
+            tailNode = null;
+        } else {
+            headNode.prevNode = null;
+        }
+        size--;
+    }
+
+    public void deleteAtTail() {
+        if (isEmpty()) {
+            return;
+        }
+
+        tailNode = tailNode.prevNode;
+        if (tailNode == null)
+            headNode = null;
+        else
+            tailNode.nextNode = null;
+        size--;
+    }
+
+    // 0.0 Print List
+
 }
