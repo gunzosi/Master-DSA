@@ -34,6 +34,7 @@ public class UnionIntersection {
         }
     }
 
+
     public static <T> LinkedListNode<T> intersection(LinkedListNode<T> head1, LinkedListNode<T> head2) {
         LinkedListNode<T> result = null;
         LinkedListNode<T> tail = null;
@@ -70,6 +71,7 @@ public class UnionIntersection {
         newNode.next = head;
         return newNode;
     }
+
 
     public static void main(String[] args) {
         Integer[][] unionList = {
@@ -125,6 +127,5 @@ public class UnionIntersection {
             System.out.println("\n");
             System.out.println(new String(new char[100]).replace('\0', '-'));
         }
-
     }
 }
