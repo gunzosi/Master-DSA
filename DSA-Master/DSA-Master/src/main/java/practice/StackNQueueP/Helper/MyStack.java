@@ -12,6 +12,11 @@ public class MyStack<T> {
         this.stack_size = 0;
     }
 
+    public MyStack() {
+        this.stack_list = new ArrayList<>();
+        this.stack_size = 0;
+    }
+
     public boolean isEmpty() {
         return stack_size == 0;
     }
