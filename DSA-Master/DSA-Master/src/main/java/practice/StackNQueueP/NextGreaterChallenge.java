@@ -1,5 +1,7 @@
 package practice.StackNQueueP;
 
+import practice.StackNQueueP.Helper.MyStack;
+
 import java.util.Arrays;
 
 public class NextGreaterChallenge {
@@ -21,6 +23,23 @@ public class NextGreaterChallenge {
     }
 
     public static int[] nextGreaterElement(int[] arr) {
+        MyStack< Integer > stack = new MyStack < > ();
+        int[] res = new int[arr.length];
+        Arrays.fill(res, -1);
 
+        for (int i = arr.length - 1; i >= 0; i--) {
+            // While stack has elements and the current element is greater than peek element, pop all elements
+            while (!stack.isEmpty() && stack.peek() <= arr[i]) {
+                stack.pop();
+            }
+
+            // If the stack has an element, the peek element will be greater than ith element
+            if (!stack.isEmpty()) {
+                res[i] = stack.peek();
+            }
+            stack.push(arr[i]);
+        }
+
+        return res;
     }
 }
