@@ -1,7 +1,5 @@
 package datastructure.Graph;
 
-import static practice.LinkedListP.UnionIntersection.insertAtHead;
-
 public class DoublyLinkedList<T> {
     public class Node {
         public T data;
