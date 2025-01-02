@@ -8,6 +8,7 @@ public class LinkedList<T> {
         this.head = null;
     }
 
+
     // 1. Create a LinkedList
     public void createLinkedList(T[] lst) {
         for (int i = lst.length - 1; i >= 0; i--) {
