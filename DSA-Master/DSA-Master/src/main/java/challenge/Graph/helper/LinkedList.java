@@ -6,6 +6,8 @@ public class LinkedList<T> {
         public Node nextNode;
     }
 
+    public LinkedListNode<T> head;
+
     public Node headNode;
     public int size;
 
@@ -92,6 +94,13 @@ public class LinkedList<T> {
             secondLast.nextNode = null;
         }
         size--;
+    }
+
+    public void createLinkedList(T[] lst) {
+        for (int i = lst.length - 1; i >= 0; i--) {
+            LinkedListNode<T> newNode = new LinkedListNode<>(lst[i]);
+            insertAtHead(lst[i]);
+        }
     }
 
 }

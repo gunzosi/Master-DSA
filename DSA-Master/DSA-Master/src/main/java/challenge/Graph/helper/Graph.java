@@ -1,9 +1,14 @@
 package challenge.Graph.helper;
 
-public class Graph {
+import java.util.List;
+
+public class Graph<T> {
     public int vertices;
     public LinkedList<Integer>[] adjacencyList;
     // public DoublyLinkedList < Integer > adjacencyList[];
+
+    public List<List<Integer>> adjacency;
+    public LinkedList<Integer> list[];
 
     public int getVertices() {
         return vertices;
@@ -55,6 +60,26 @@ public class Graph {
             } else {
                 System.out.println("|" + i + "| => " + "null");
             }
+        }
+    }
+
+    public void printAdjacencyList() {
+        for (int i = 0; i < vertices; ++i) {
+            System.out.print("Vertex " + i + " :");
+            for (int j = 0; j < adjacencyList2.get(i).size(); ++j) {
+                System.out.print(" -> " + adjacencyList2.get(i).get(j));
+            }
+            System.out.println();
+        }
+    }
+
+    public void getAdjacencyList2() {
+        for (int i = 0; i < vertices; ++i) {
+            System.out.print("Vertex " + i + " :");
+            for (int j = 0; j < adjacencyList2.get(i).size(); ++j) {
+                System.out.print(" -> " + adjacencyList2.get(i).get(j));
+            }
+            System.out.println();
         }
     }
 }

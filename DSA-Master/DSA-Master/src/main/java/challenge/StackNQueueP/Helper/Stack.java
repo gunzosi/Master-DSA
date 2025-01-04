@@ -14,6 +14,9 @@ public class Stack <V>{
         this.currentSize = 0;
     }
 
+    public Stack() {
+    }
+
     public int getCurrentSize() {
         return currentSize;
     }
