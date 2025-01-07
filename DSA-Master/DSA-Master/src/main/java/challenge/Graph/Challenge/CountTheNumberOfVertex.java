@@ -1,7 +1,6 @@
 package challenge.Graph.Challenge;
 
 import challenge.Graph.helper.Graph;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -9,13 +8,18 @@ import java.util.Random;
 
 public class CountTheNumberOfVertex {
     static int countEdges(Graph graph) {
-        int sum = 0;
-
-        for (int i = 0; i < graph.vertices; i++) {
-            sum += graph.adjacencyList2.get(i).size();
+        if (graph.adjacencyList2 == null) {
+            throw new IllegalStateException("Adjacency list is not initialized!");
         }
 
-        return sum/2;
+        int sum = 0;
+        for (Object obj : graph.adjacencyList2) {
+            if (obj instanceof List<?>) {
+                List<?> neighbors = (List<?>) obj;
+                sum += neighbors.size();
+            }
+        }
+        return sum / 2; // Divide by 2 for undirected graph, remove division for directed graph
     }
 
     static int countVertices(List<List<Integer>> edges) {
@@ -42,16 +46,23 @@ public class CountTheNumberOfVertex {
         for (int i = 0; i < edges.size(); ++i) {
             int vertices = countVertices(edges.get(i));
             Graph g = new Graph(vertices);
-            List<Integer> edge = edges.get(i).get(rand.nextInt(edges.get(i).size()));
+
             for (List<Integer> e : edges.get(i)) {
                 g.addEdge(e.get(0), e.get(1));
+                // Get the lists from adjacencyList2
+                @SuppressWarnings("unchecked")
+                List<Integer> sourceList = (List<Integer>) g.adjacencyList2.get(e.get(0));
+                @SuppressWarnings("unchecked")
+                List<Integer> destList = (List<Integer>) g.adjacencyList2.get(e.get(1));
+
+                // Add the edges for undirected graph
+                sourceList.add(e.get(1));
+                destList.add(e.get(0));
             }
+
             System.out.println("Initial graph: ");
             g.printAdjacencyList();
             System.out.println("\nTotal edges: " + countEdges(g) + "\n");
         }
     }
 }
-
-
-

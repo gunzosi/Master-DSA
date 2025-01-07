@@ -9,6 +9,7 @@ public class Graph<T> {
 
     public List<List<Integer>> adjacency;
     public LinkedList<Integer> list[];
+    public List<List<Integer>> adjacencyList2;
 
     public int getVertices() {
         return vertices;
@@ -61,6 +62,11 @@ public class Graph<T> {
                 System.out.println("|" + i + "| => " + "null");
             }
         }
+    }
+
+    // size()
+    public int size() {
+        return adjacencyList2.size();
     }
 
     public void printAdjacencyList() {
