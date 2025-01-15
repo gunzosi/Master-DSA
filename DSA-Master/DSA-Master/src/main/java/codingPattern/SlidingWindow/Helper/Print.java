@@ -14,7 +14,8 @@ public class Print {
     }
 
     public static String printSetInt(Set<Integer> set) {
-        // Convert the set to a string with elements separated by commas
-        return "[" + set.toString().substring(1, set.toString().length() - 1) + "]";
+        return null;
     }
+
+
 }
