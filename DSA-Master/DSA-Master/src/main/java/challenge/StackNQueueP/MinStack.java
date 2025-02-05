@@ -64,14 +64,14 @@ class Driver {
             System.out.println("\t Starting operations: ");
 
             for (int j = 0; j < calls[i].length; j++) {
-                if (calls[i][j].equals("push()")) {
-                    String inputString = "push(" + inputs[i][j] + ")";
-                    System.out.println("\t\t" + inputString);
-                    stack.push(inputs[i][j]);
-                } else if (calls[i][j].equals("pop()")) {
-                    System.out.println("\t\tpop()   returns " + stack.pop());
-                } else if (calls[i][j].equals("min()")) {
-                    System.out.println("\t\tmin()   returns " + stack.min());
+                switch (calls[i][j]) {
+                    case "push()" -> {
+                        String inputString = "push(" + inputs[i][j] + ")";
+                        System.out.println("\t\t" + inputString);
+                        stack.push(inputs[i][j]);
+                    }
+                    case "pop()" -> System.out.println("\t\tpop()   returns " + stack.pop());
+                    case "min()" -> System.out.println("\t\tmin()   returns " + stack.min());
                 }
             }
             System.out.println(new String(new char[100]).replace('\0', '-'));
